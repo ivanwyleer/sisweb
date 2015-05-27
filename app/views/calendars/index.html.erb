@@ -98,17 +98,33 @@
 			<div id="dashboard-overview" class="row" style="visibility: visible; position: relative;">
 				<div id="ow-marketplace" class="col-sm-12 col-md-12">
 						<h4 class="page-header">
-
+						<!--	<%= link_to(new_calendar_path, class: "btn btn-info btn-sm", disabled: true) do %>
+								<div class="text-left" style="font-size:15px"> 
+            						 <i style="font-size:22px" class="fa fa-file-o"></i>
+                 						 <span>Nova Solicitação</span>
+          						</div>
+							<% end %>-->
+							<!--<i class="fa fa-book"></i>
+							Agendamentos
+-->				<% @calendars.each do |calendar| %>
+					<% if current_user.telfixo == nil %>
+						<% if calendar.user_id == current_user.id %>
+							<%= link_to(new_calendar_path, class: "btn btn-info btn-sm", disabled: true) do %>
+								<div class="text-left" style="font-size:15px"> 
+            						 <i style="font-size:22px" class="fa fa-file-o"></i>
+                 						 <span>Nova Solicitação</span>
+          						</div>
+							<% end %>
+						<% end %>
+					<% else %>
 							<%= link_to(new_calendar_path, class: "btn btn-info btn-sm") do %>
 								<div class="text-left" style="font-size:15px"> 
             						 <i style="font-size:22px" class="fa fa-file-o"></i>
                  						 <span>Nova Solicitação</span>
           						</div>
 							<% end %>
-
-							<!--<i class="fa fa-book"></i>
-							Agendamentos
--->
+					<% end %>
+				<%end %>
 
 						</h4>
 
