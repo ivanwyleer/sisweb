@@ -15,17 +15,22 @@
 
 
 
-  <div class="form-actions" >
-          <%= f.submit 'Confirmar', class: "form-actions btn btn-success btn-block" %>
+       <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-actions" >
+              <%= f.submit 'Confirmar', class: "form-actions btn btn-success btn-block" %>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+              <%= link_to(professionals_path, class: "form-actions btn btn-danger btn-block") do %>
+                <div class="text-center" style="font-size:14px"> 
+                   <i class="fa fa-ban"></i>
+                        <span>Cancelar</span>
+                </div>
+              <% end %>
+          </div>
         </div>
 
-
-        <%= link_to(professionals_path, class: "form-actions btn btn-danger btn-block") do %>
-          <div class="text-center" style="font-size:13px"> 
-             <i class="fa fa-ban"></i>
-                  <span>Cancelar</span>
-          </div>
-        <% end %>
 
 
 

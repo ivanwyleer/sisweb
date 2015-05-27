@@ -68,8 +68,24 @@
         </div>
 </div>
 
-<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
-<%= link_to 'Back', calendars_path %>
+<div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <%= link_to(edit_calendar_path(@calendar), class: "form-actions btn btn-warning btn-block") do %>
+                  <div class="text-center" style="font-size:14px"> 
+                     <i class="fa fa-edit"></i>
+                          <span>Editar</span>
+                  </div>
+            <% end %>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+              <%= link_to(calendars_path, class: "form-actions btn btn-danger btn-block") do %>
+                  <div class="text-center" style="font-size:14px"> 
+                     <i class="fa fa-mail-reply"></i>
+                          <span>Voltar</span>
+                  </div>
+                <% end %>
+          </div>
+        </div>
 
 <% else %>
 
@@ -130,10 +146,26 @@
             <div class="clearfix visible-xs"></div>
         </div>
 </div>
+       
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <%= link_to(edit_calendar_path(@calendar), class: "form-actions btn btn-warning btn-block") do %>
+                  <div class="text-center" style="font-size:14px"> 
+                     <i class="fa fa-edit"></i>
+                          <span>Editar</span>
+                  </div>
+            <% end %>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+              <%= link_to(calendars_path, class: "form-actions btn btn-danger btn-block") do %>
+                  <div class="text-center" style="font-size:14px"> 
+                     <i class="fa fa-mail-reply"></i>
+                          <span>Voltar</span>
+                  </div>
+                <% end %>
+          </div>
+        </div>
 
-
-<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
-<%= link_to 'Back', calendars_path %>
 
 <% end %>
 <% end %>
