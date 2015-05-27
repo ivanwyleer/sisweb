@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+	<div class="row">
+	  <div id="breadcrumb" class="col-md-12">
+	    <ol class="breadcrumb">
+	      <li><a href="#">Home</a></li>
+	      <li><a href="#">Agendamentos</a></li>
+	    </ol>
+	  </div>
+	</div>
+	<h4 class="page-header">Visualizar Serviço</h4>
+
+	<div class="container-fluid">
+	        <div align="center" class="row show-grid">
+	            <div class="col-sm-6 col-xs-6">
+					  <strong>Descrição:</strong>
+					  <%= @service.description %>
+				</div>
+
+				<div class="col-sm-6 col-xs-6">
+					   <strong>Preço:</strong>
+  							R$<%= @service.price %>
+				</div>
+			</div>
+	</div>		
+
+<br>
+
+		<%= link_to(edit_service_path(@service), class: "form-actions btn btn-warning btn-block") do %>
+          <div class="text-center" style="font-size:13px"> 
+             <i class="fa fa-edit"></i>
+                  <span>Editar</span>
+          </div>
+        <% end %>
+
+        <%= link_to(services_path, class: "form-actions btn btn-danger btn-block") do %>
+          <div class="text-center" style="font-size:13px"> 
+             <i class="fa fa-mail-reply"></i>
+                  <span>Voltar</span>
+          </div>
+        <% end %>
+
+          <div class="clearfix visible-xs"></div>

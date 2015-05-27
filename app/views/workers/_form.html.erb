@@ -1,0 +1,63 @@
+<%= simple_form_for(@worker) do |f| %>
+  <%= f.error_notification %>
+
+<div class="container-fluid">
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :email, label:'E-mail', :input_html => {class: 'form-control',  placeholder: 'exemplo@mail.com'},  autofocus: true %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :password, label:'Senha',:input_html => {class: 'form-control', placeholder: 'Digite aqui!'},  autofocus: true %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :nome, label:'Nome', :input_html => {class: 'form-control',  placeholder: 'Ex: João Victor Belo'},  autofocus: true %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :endereco, label:'Endereço',:input_html => {class: 'form-control', placeholder: 'Ex: Av. Sul, n 200'},  autofocus: true %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :telcelular, label:'Celular', :input_html => {class: 'form-control',  placeholder: 'Ex: 11 91234-1233'},  autofocus: true %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :operadora_celular, label:'Operadora',:input_html => {class: 'form-control', placeholder: 'Ex: Vezion, TIM, VIVO'},  autofocus: true %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :telfixo, label:'Telefone Fixo', :input_html => {class: 'form-control',  placeholder: 'Ex: 11 1234-1233'},  autofocus: true %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :operadora_fixo, label:'Operadora',:input_html => {class: 'form-control', placeholder: 'Ex: Oi, TELEMAR, NET'},  autofocus: true %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+</div>
+
+
+         <div class="form-actions" >
+          <%= f.submit 'Confirmar', class: "form-actions btn btn-success btn-block" %>
+        </div>
+
+
+        <%= link_to(workers_path, class: "form-actions btn btn-danger btn-block") do %>
+          <div class="text-center" style="font-size:13px"> 
+             <i class="fa fa-ban"></i>
+                  <span>Cancelar</span>
+          </div>
+        <% end %>
+
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_profissional: 1
+  nome: MyString
+  especialidade: MyString
+
+two:
+  id_profissional: 1
+  nome: MyString
+  especialidade: MyString

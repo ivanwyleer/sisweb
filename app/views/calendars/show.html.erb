@@ -1,0 +1,141 @@
+<div class="row">
+  <div id="breadcrumb" class="col-md-12">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Agendamentos</a></li>
+    </ol>
+  </div>
+</div>
+<h4 class="page-header">Solicitação nº <%= @calendar.id %></h4>
+<% if current_user %>
+<% if current_user.role_id == 1 %>
+
+<div class="container-fluid">
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                  <strong>Cliente:</strong>
+                    <%= @calendar.user_id %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                   <strong>Status:</strong>
+                    <%= @calendar.status %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                    <strong>Data de Envio:</strong>
+                      <%= @calendar.date_send %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                    <strong>Date Solicitada:</strong>
+                       <%= @calendar.date_request %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                  <strong>Tamanho do Cabelo:</strong>
+                    <%= @calendar.hair_size %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <strong>Cor do Cabelo:</strong>
+                    <%= @calendar.hair_color %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                <strong>Profissional:</strong>
+                  <%= @calendar.professional_id %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <strong>Serviço:</strong>
+                   <%= @calendar.service_id %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-sm-12 col-xs-12">
+                <strong>Observação:</strong>
+                   <%= @calendar.observation %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+</div>
+
+<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
+<%= link_to 'Back', calendars_path %>
+
+<% else %>
+
+<div class="container-fluid">
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                  <strong>Cliente:</strong>
+                    <%= @calendar.user_id %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                   <strong>Status:</strong>
+                    <%= @calendar.status %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                    <strong>Data de Envio:</strong>
+                      <%= @calendar.date_send %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                    <strong>Date Solicitada:</strong>
+                       <%= @calendar.date_request %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                  <strong>Tamanho do Cabelo:</strong>
+                    <%= @calendar.hair_size %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <strong>Cor do Cabelo:</strong>
+                    <%= @calendar.hair_color %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                <strong>Profissional:</strong>
+                  <%= @calendar.professional_id %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <strong>Serviço:</strong>
+                   <%= @calendar.service_id %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-sm-12 col-xs-12">
+                <strong>Observação:</strong>
+                   <%= @calendar.observation %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+</div>
+
+
+<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
+<%= link_to 'Back', calendars_path %>
+
+<% end %>
+<% end %>
+
+

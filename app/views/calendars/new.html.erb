@@ -1,0 +1,187 @@
+<div class="row">
+  <div id="breadcrumb" class="col-md-12">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Agendamentos</a></li>
+      <li><a href="#">Nova Solicitação</a></li>
+    </ol>
+  </div>
+</div>
+<h4 class="page-header">Novo Agendamento</h4>
+
+<% if current_user.role_id == 2 %>
+  <%= simple_form_for(@calendar) do |f| %>
+    <%= f.error_notification %>                                                                                 
+    <div class="container-fluid">
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                <%= f.association :user, label:'Cliente',label_method: :nome, value_method: :id, include_blank: false, collection: User.where(["role_id = ?","1"]), :input_html => {class: 'form-control'} %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :date_request, label:'Data Desejada', :as => :string, :input_html => {data: {behaviour: "datepicker"},:placeholder => 'Selecione...', class: 'form-control'} %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                 <%= f.input :hair_color, label:'Cor do cabelo', :input_html => {class: 'form-control',  placeholder: 'Castanho escuro'  },  autofocus: true %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                 <%= f.input :hair_size, label:'Tamanho do cabelo', collection: ["Curto", "Medio", "Comprido"], input_html: {class: 'form-control'}%> 
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+        <div class="row show-grid">
+             <div class="col-sm-6 col-xl-6">
+                <%= f.association :service, label:'Serviço', label_method: :description, value_method: :id, include_blank: false, :input_html => {class: 'form-control'} %>
+             </div>
+
+             <div class="col-sm-6 col-xl-6">
+                <%= f.association :professional, label:'Profissional', label_method: :name, value_method: :id, include_blank: false, :input_html => {class: 'form-control'} %> 
+             </div>
+        </div>
+
+        <div class="row show-grid">
+            <div class="col-sm-12 col-xs-12">
+                <%= f.input :observation, label:'Observação', :input_html => {class: 'form-control', placeholder: 'Obs'}%>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+          <%= f.input :status, input_html: {value: "Agendado", type:"hidden"}, :as => :hidden %>
+      
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-actions" >
+              <%= f.submit 'Pré-agendar', class: "form-actions btn btn-success btn-block" %>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+              <%= link_to(calendars_path, class: "form-actions btn btn-danger btn-block") do %>
+                <div class="text-center" style="font-size:13px"> 
+                   <i class="fa fa-ban"></i>
+                        <span>Cancelar</span>
+                </div>
+              <% end %>
+          </div>
+        </div> 
+
+              <div class="clearfix visible-xs"></div> 
+    </div>
+  <% end %>    
+<% end %>
+
+<% if current_user.role_id == 1 %>
+
+
+	<%= simple_form_for(@calendar) do |f| %>
+		<%= f.error_notification %>  
+
+		  <div class="container-fluid">
+        <div class="row show-grid">
+            <div class="col-xs-3 col-md-4 col-sm-4">
+                
+            </div>
+
+            <div class="col-xs-6 col-md-4 col-sm-4">
+                <%= f.input :date_request, label:'Data Desejada', :as => :string, :input_html => {data: {behaviour: "datepicker"},:placeholder => 'Selecione...', class: 'form-control'} %>
+            </div>
+
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :hair_color, label:'Cor do cabelo', :input_html => {class: 'form-control',  placeholder: 'Castanho escuro'  },  autofocus: true %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <%= f.input :hair_size, label:'Tamanho do cabelo', collection: ["Curto", "Medio", "Comprido"], input_html: {class: 'form-control'}%>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+        <div class="row show-grid">
+            <div class="col-sm-6 col-xs-6">  
+                <%= f.association :professional, label:'Profissional', label_method: :name, value_method: :id, include_blank: false, :input_html => {class: 'form-control'} %>
+            </div>
+
+            <div class="col-sm-6 col-xs-6">
+                <%= f.association :service, label:'Serviço', label_method: :description, value_method: :id, include_blank: false, :input_html => {class: 'form-control'} %>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+        <div class="row show-grid">
+            <div class="col-sm-12 col-xs-12">
+                <%= f.input :observation, label:'Observação', :input_html => {class: 'form-control', placeholder: 'Obs'}%>
+            </div>
+            <div class="clearfix visible-xs"></div>
+        </div>
+
+          <%= f.input :status, input_html: {value: "Encaminhado", type:"hidden"}, :as => :hidden %>
+			<% if current_user %>
+				<%= f.input :user_id, input_html: {value: current_user.id, type:"hidden"}, :as => :hidden %>
+			<% end %>
+
+
+       <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-actions" >
+              <%= f.submit 'Pré-agendar', class: "form-actions btn btn-success btn-block" %>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+              <%= link_to(calendars_path, class: "form-actions btn btn-danger btn-block") do %>
+                <div class="text-center" style="font-size:13px"> 
+                   <i class="fa fa-ban"></i>
+                        <span>Cancelar</span>
+                </div>
+              <% end %>
+          </div>
+        </div> 
+
+
+        <% end %>
+              <div class="clearfix visible-xs"></div> 
+  </div>
+
+
+
+  		<!--
+			<p align="center"style='font-size: 29px; margin-left:-20px; margin-top:-35px;'>Nova solicitação</p>
+		  
+			<%= f.input :hair_color, label:'Cor do cabelo', autofocus: true %>
+			<%= f.input :hair_size, label:'Tamanho do cabelo', collection: ["Curto", "Medio", "Comprido"]%>
+			<%= f.input :date_request, label:'Data desejada' %>
+			<%= f.input :date_marked, input_html:{value:Time.now, type:"hidden"} %>
+			<%= f.association :service, label:'Serviço', label_method: :description, value_method: :id, include_blank: false %>
+			<%= f.association :professional, label:'Profissional', label_method: :name, value_method: :id, include_blank: false %>  
+			<%= f.input :observation, label:'Observação'%>
+			<%= f.input :status, input_html: {value: "Encaminhado", type:"hidden"}%>  
+			
+			<% if current_user %>
+				<%= f.input :user_id, input_html: {value: current_user.id, type:"hidden"} %>
+				<%= current_user.nome %>
+			<% end %>
+			
+			<div class="form-actions">
+				<%= f.submit 'Enviar solicitação' %> 
+				<%= link_to 'Back', calendars_path%> 
+			</div>
+		-->
+  <% end %>
+<% end %>
+
+ <script type="text/javascript">
+  $('[data-behaviour~=datepicker]').datepicker({
+    dateFormat: "dd/mm/yy",
+    "weekStart": 1,
+    autoclose: true,
+    language: "pt-BR"
+  });
+</script>

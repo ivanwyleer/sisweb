@@ -1,0 +1,181 @@
+<!--
+<h1>Listing services</h1>
+
+<%= form_tag customers_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>E-mail</th>
+      <th>Password</th>
+      <th>Nome</th>
+      <th>Endereco</th>
+      <th>Telcelular</th>
+      <th>Telfixo</th>
+      <th>Operadora_celular</th>
+      <th>Operadora_fixo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.email %></td>
+        <td><%= customer.password %></td>
+        <td><%= customer.nome %></td>
+        <td><%= customer.endereco %></td>
+        <td><%= customer.telcelular %></td>
+        <td><%= customer.telfixo %></td>
+        <td><%= customer.operadora_celular %></td>
+        <td><%= customer.operadora_fixo %></td>                
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Cliente', new_customer_path %>
+-->
+<% if current_user %>
+  <% if current_user.role_id == 2 %>
+    <% if current_user.role_id == 3 %>
+
+
+    <div class="row">
+      <div id="breadcrumb" class="col-md-12">
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Cadastros - Clientes</a></li>
+        </ol>
+      </div>
+    </div>
+    <h4 class="page-header">Clientes</h4>
+
+
+    <div class="row-fluid">
+      
+      <div id="dashboard_tabs" class="col-xs-12 col-sm-12">
+        <!--Start Dashboard Tab 1-->
+        <div id="dashboard-overview" class="row" style="visibility: visible; position: relative;">
+          <div id="ow-marketplace" class="col-sm-12 col-md-12">
+            <h4 class="page-header">
+
+              <%= link_to(new_customer_path, class: "btn btn-info btn-sm") do %>
+                    <div class="text-left" style="font-size:15px"> 
+                             <i style="font-size:22px" class="fa fa-user"></i>
+                                 <span>Cadastrar Cliente</span>
+                          </div>
+                  <% end %>
+
+            </h4>
+            
+            <div class="box">
+          <div class="box-header">
+            <div class="box-name">
+              <i class="fa fa-users"></i>
+              <span>Lista de Clientes</span>
+            </div>
+            <div class="no-move"></div>
+          </div>
+          <div class="box-content no-padding">
+
+              <%= form_tag customers_path, :method => 'get' do %>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search", :name => nil %>
+                </p>
+              <% end %>
+              
+            <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-1">
+              <thead>
+                <tr>
+                  <th>E-mail</th>
+                  <th>Nome</th>
+                  <th>Celular</th>
+                  <th>Tel. Fixo</th>
+                  <th colspan="3">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+              <!-- Start: list_row -->
+                <% @customers.each do |customer| %>
+                  <tr>
+                    <td><%= customer.email %></td>
+                    <td><%= customer.nome %></td>
+                    <td><%= customer.telcelular %></td>
+                    <td><%= customer.telfixo %></td> 
+                    <td align="center">
+                    <%= link_to(customer, class: "btn btn-defaut btn-sm") do%>
+                          <div class="text-center" style="font-size:15px"> 
+                             <i class="fa fa-eye"></i>
+                                 <span></span>
+                          </div>
+                    <% end %>
+                    <%= link_to(edit_customer_path(customer), class: "btn btn-warning btn-sm") do%>
+                          <div class="text-center" style="font-size:15px"> 
+                             <i class="fa fa-edit"></i>
+                                 <span></span>
+                          </div>
+                   <% end %>
+                   <%= link_to(customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm") do%>
+                          <div class="text-center" style="font-size:15px"> 
+                             <i class="fa fa-times-circle-o"></i>
+                                 <span></span>
+                          </div>
+                   <% end %>
+
+
+
+                    </td>
+                  </tr>
+                <% end %>
+              <!-- End: list_row -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+            
+            
+            
+          </div>
+        </div>
+        <!--End Dashboard Tab 1-->
+        <!--Start Dashboard Tab 2-->
+        
+        <!--Start Dashboard Tab 3-->
+        
+        <!--End Dashboard Tab 3-->
+        <!--Start Dashboard Tab 4-->
+        
+        <!--End Dashboard Tab 4-->
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <!--End Dashboard 2 -->
+    <div style="height: 40px;"></div>
+    <% end %>
+  <% end %>
+  <% if current_user.role_id == 1 %>
+    <div class="container-fluid">
+      <div class="row">
+        <div id="page-500" class="col-xs-12 text-center" style="margin-top: 40px;">
+          <h1>Error 500</h1>
+          <h3>Oops, Você não possui a permissão para acessar este contéudo!</h3>
+          <%= image_tag 'logo-200.png' %>
+          <a href="<%= calendars_path%>" class="btn btn-default btn-label-left"><span><i class="fa fa-reply"></i></span> Retornar para Agendamentos</a>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix visible-xs"></div>
+  <% end %>
+<% end %>

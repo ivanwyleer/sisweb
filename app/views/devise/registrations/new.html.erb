@@ -1,0 +1,24 @@
+<h2>Sign up</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+    <%= f.input :password_confirmation, required: true %>
+    <%= f.input :nome, required: true %>
+    <%= f.input :endereco, required: true %>
+    <%= f.input :telcelular, required: true %>
+    <%= f.input :telfixo %>
+    <%= f.input :operadora_celular %>
+    <%= f.input :operadora_fixo %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

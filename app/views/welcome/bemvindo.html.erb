@@ -1,0 +1,31 @@
+<% if current_user %>
+	<% if current_user.role_id == 1 %>
+		<div class="jumbotron text-center" style="margin-top:70px">
+		    <h1>Bem Vindo ao Sistema de Agendamentos On-line!</h1>
+		    <p class="lead">The Bootstrap 3 grid is fluid only. This example shows how to use a custom container to create a fixed width CLIENTE.</p><br>
+		    <p><a class="btn btn-large btn-success" href="<%= new_user_session_path  %> "style="font-size:20px">Vamos começar!</a></p>
+		</div>
+	<% end %>
+	<% if current_user.role_id == 2 %>
+		<div class="jumbotron text-center" style="margin-top:70px">
+		    <h1>Bem Vindo ao Sistema de Agendamentos On-line!</h1>
+		    <p class="lead">The Bootstrap 3 grid is fluid only. This example shows how to use a custom container to create a fixed width FUNCIONARIO.</p><br>
+		    <p><a class="btn btn-large btn-success" href="<%= new_user_session_path  %> "style="font-size:20px">Vamos começar!</a></p>
+		</div>
+	<% end %>
+	<% if current_user.role_id == 3 %>
+		<div class="jumbotron text-center" style="margin-top:70px">
+		    <h1>Bem Vindo ao Sistema de Agendamentos On-line!</h1>
+		    <p class="lead">The Bootstrap 3 grid is fluid only. This example shows how to use a custom container to create a fixed width ADMINISTRADOR.</p><br>
+		    <p><a class="btn btn-large btn-success" href="<%= new_user_session_path  %> "style="font-size:20px">Vamos começar!</a></p>
+		</div>
+	<% end %>
+<% else %>
+	<div class="container">
+		<div class="jumbotron text-center" style="margin-top:70px">
+		    <h1>Bem Vindo ao Sistema de Agendamentos On-line!</h1>
+		    <p class="lead">The Bootstrap 3 grid is fluid only. This example shows how to use a custom container to create a fixed width Visitante.</p><br>
+		    <p><a class="btn btn-large btn-success" href="<%= new_user_session_path  %> "style="font-size:20px">Vamos começar!</a></p>
+		</div>
+	</div>	
+<% end %>
