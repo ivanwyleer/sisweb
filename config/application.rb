@@ -19,7 +19,7 @@ module Sisweb
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.assets.precompile += ['bootstrap.css', 'jquery-ui.min.css', 'jquery.fancybox.css', 'fullcalendar.css', 'xcharts.min.css', 'select2.css', 'style.css'] 
+    config.assets.precompile += ['bootstrap.css', 'jquery-ui.min.css', 'jquery.fancybox.css', 'fullcalendar.css', 'xcharts.min.css', 'select2.css', 'style.css', 'jquery.datetimepicker.css'] 
     #config.assets.precompile += ['bootstrap.min.js', 'jquery-2.1.0.min.js', 'jquery-ui.min.js']
 
   end

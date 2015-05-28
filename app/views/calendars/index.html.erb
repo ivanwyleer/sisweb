@@ -106,26 +106,34 @@
 							<% end %>-->
 							<!--<i class="fa fa-book"></i>
 							Agendamentos
--->				<% @calendars.each do |calendar| %>
-					<% if current_user.telfixo == nil %>
+-->			<% if current_user.role_id == 1 %>
+				<% if current_user.telfixo == nil %>
+					<% @calendars.each do |calendar| %>
 						<% if calendar.user_id == current_user.id %>
 							<%= link_to(new_calendar_path, class: "btn btn-info btn-sm", disabled: true) do %>
 								<div class="text-left" style="font-size:15px"> 
-            						 <i style="font-size:22px" class="fa fa-file-o"></i>
-                 						 <span>Nova Solicitação</span>
-          						</div>
+			            			<i style="font-size:22px" class="fa fa-file-o"></i>
+			                 			<span>Nova Solicitação</span>
+			          			</div>
 							<% end %>
 						<% end %>
-					<% else %>
-							<%= link_to(new_calendar_path, class: "btn btn-info btn-sm") do %>
-								<div class="text-left" style="font-size:15px"> 
-            						 <i style="font-size:22px" class="fa fa-file-o"></i>
-                 						 <span>Nova Solicitação</span>
-          						</div>
-							<% end %>
 					<% end %>
-				<%end %>
-
+				<% else %>
+					<%= link_to(new_calendar_path, class: "btn btn-info btn-sm") do %>
+						<div class="text-left" style="font-size:15px"> 
+			            	 <i style="font-size:22px" class="fa fa-file-o"></i>
+			            		 <span>Nova Solicitação</span>
+			          	</div>
+					<% end %>
+				<% end %>	
+			<% else %>
+				<%= link_to(new_calendar_path, class: "btn btn-info btn-sm") do %>
+					<div class="text-left" style="font-size:15px"> 
+			        	<i style="font-size:22px" class="fa fa-file-o"></i>
+			               	<span>Nova Solicitação</span>
+			        </div>
+				<% end %>
+			<% end %>
 						</h4>
 
 							

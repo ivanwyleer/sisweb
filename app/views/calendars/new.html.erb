@@ -88,7 +88,7 @@
             </div>
 
             <div class="col-xs-6 col-md-4 col-sm-4">
-                <%= f.input :date_request, label:'Data Desejada', :as => :string, :input_html => {data: {behaviour: "datepicker"},:placeholder => 'Selecione...', class: 'form-control'} %>
+                <%= f.input :date_request, label:'Data Desejada', :as => :string, :input_html => {data: {behaviour: "datetimepicker_mask"},:placeholder => 'Selecione...', class: 'form-control'} %>
             </div>
 
             <div class="clearfix visible-xs"></div>
@@ -183,4 +183,7 @@
     autoclose: true,
     language: "pt-BR"
   });
+  $('[data-behaviour~=datetimepicker_mask]').datetimepicker({
+  mask:'9999/19/39 29:59'
+});
 </script>

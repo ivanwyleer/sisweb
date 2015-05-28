@@ -14,6 +14,7 @@
   <%= stylesheet_link_tag "select2.css" %>
   <%= stylesheet_link_tag "style.css" %>
   <%= stylesheet_link_tag "jquery.fancybox.css" %>
+   <%= stylesheet_link_tag "jquery.datetimepicker.css" %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -159,7 +160,7 @@
 </header>
 <!--End Header-->
 <!--Start Container-->
-<% if current_user %>
+
 <div id="main" class="container-fluid">
 	<div class="row">
 			<div id="sidebar-left" class="col-xs-2 col-sm-2">
@@ -170,6 +171,7 @@
 							<span class="hidden-xs">Agendamentos</span>
 						</a>
 					</li>
+			<% if current_user %>		
 				<% if current_user.role_id != 1 %>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle">
@@ -180,14 +182,15 @@
 							<% if current_user.role_id == 2 %>
 								<li><a class="#" href="<%= customers_path %>">Clientes</a></li>
 							<% end %>
-							<% if current_user.role_id == 3 %>
+							<% if current_user.role_id == 2 %>
 								<li><a class="#" href="<%= workers_path %>">Funcionários</a></li>
 								<li><a class="#" href="<%= services_path %>">Serviços</a></li>
 								<li><a class="#" href="<%= professionals_path %>">Profissionais</a></li>
 							<% end %>
+			<% end %>
 						</ul>
 					</li>
-				<% end %>
+				
 					<!--
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle">
